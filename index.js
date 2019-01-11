@@ -8,7 +8,7 @@ module.exports = function ProgressBarPlugin(options) {
   options = options || {};
 
   var stream = options.stream || process.stderr;
-  var enabled = stream && stream.isTTY;
+  var enabled = (stream && stream.isTTY) || options.force;
 
   if (!enabled) {
     return function () {};
